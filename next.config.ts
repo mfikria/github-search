@@ -1,10 +1,14 @@
 import type { NextConfig } from "next";
 
+
+const isProduction = process.env.NODE_ENV === 'production';
+const basePath = isProduction ? '/github-search' : '';
+
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '/github-search',
-  assetPrefix: '/github-search',
+  basePath: basePath,
+  assetPrefix: basePath,
   images: {
     unoptimized: true
   }
