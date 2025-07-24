@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitHub Search
 
-## Getting Started
+Search GitHub users and explore their repositories with a clean, responsive interface.
 
-First, run the development server:
+## Demo
+
+🔗 **Live Demo**: [https://mfikria.github.io/github-search/](https://mfikria.github.io/github-search/)
+📂 **Repository**: [https://github.com/mfikria/github-search](https://github.com/mfikria/github-search)
+
+**Try the demo**: Visit the live demo link above and search for any GitHub username (e.g., "john", or "alice") to see the app in action. Click on user cards to expand and explore their repositories.
+
+## Features
+
+- **User Search**: Find up to 5 GitHub users with similar usernames
+- **Repository Explorer**: View all repositories for selected users (no limit)
+- **Responsive Design**: Works on desktop and mobile
+
+## Quick Start
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/mfikria/github-search.git
+   cd github-search
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**: [http://localhost:3000](http://localhost:3000)
+
+## Usage Instructions
+
+1. **Search Users**: Enter a GitHub username in the search box
+2. **View Results**: Click on any user card to expand and see their repositories
+3. **Explore Repos**: Click on repository cards to visit them on GitHub
+4. **New Search**: Enter a new search term to reset and find different users
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev      # Development server
+npm run build    # Production build
+npm run test     # Run tests
+npm run lint     # ESLint check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture & Tech Stack Choices
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Why This Structure?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Component-Based Architecture**: Organized into reusable UI components (`/components`) for maintainability and consistency across the app.
 
-## Learn More
+**State Management**: Zustand chosen over Redux for its simplicity and minimal boilerplate while providing powerful state management capabilities.
 
-To learn more about Next.js, take a look at the following resources:
+**Service Layer**: Separated API logic (`/services`) from UI components for better testability and code organization.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Custom Hooks**: Extracted reusable logic (`/hooks`) like debouncing and infinite scroll for better code reuse.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tech Stack
 
-## Deploy on Vercel
+- **Next.js 15**: Latest features, App Router for better performance, built-in optimization
+- **TypeScript**: Type safety reduces bugs and improves developer experience
+- **Tailwind CSS**: Utility-first approach for rapid UI development and consistent design
+- **Zustand**: Lightweight state management without Redux complexity
+- **Axios**: Robust HTTP client with interceptors for API token handling
+- **Jest + Testing Library**: Industry standard for reliable testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Auto-deploys to GitHub Pages on push to `main`. Configure in Settings → Pages → GitHub Actions.

@@ -30,7 +30,7 @@ export const useGitHubStore = create<GitHubState>((set, get) => ({
   hasSearched: false,
   searchError: null,
   searchQuery: '',
-  searchUsers: async (query: string, maxUsers: number = 10) => {
+  searchUsers: async (query: string, maxUsers: number = 5) => {
     if (!query.trim()) return;
 
     set({
@@ -76,7 +76,7 @@ export const useGitHubStore = create<GitHubState>((set, get) => ({
     }
   },
 
-  fetchUserRepositories: async (username: string, maxRepos: number = 6) => {
+  fetchUserRepositories: async (username: string, maxRepos: number = 100) => {
     const { searchResults } = get();
     const userIndex = searchResults.findIndex(result => result.user.login === username);
     if (userIndex === -1) return;
@@ -137,7 +137,7 @@ export const useGitHubStore = create<GitHubState>((set, get) => ({
     const { searchResults, fetchUserRepositories } = get();
     const user = searchResults.find(result => result.user.login === username);
     if (user && user.repositories.length === 0 && !user.loading) {
-      fetchUserRepositories(username, 6);
+      fetchUserRepositories(username, 100);
     }
   },
 
